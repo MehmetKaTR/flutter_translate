@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'scrns/story_illust.dart';
 
 class CustomBottomBar extends StatelessWidget {
   const CustomBottomBar({super.key});
@@ -46,17 +47,21 @@ class CustomBottomBar extends StatelessWidget {
                 right: 26,
                 bottom: 8,
               ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 10,
-                children: [
-                  Icon(
-                    Icons.search, // Change this to the icon you want
-                    size: 28,
-                  ),
-                ],
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const StoryIllust(),
+                    ),
+                  );
+                },
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [Icon(Icons.language, size: 28)],
+                ),
               ),
             ),
           ),
@@ -77,7 +82,7 @@ class CustomBottomBar extends StatelessWidget {
                 spacing: 10,
                 children: [
                   Icon(
-                    Icons.notifications, // Change this to the icon you want
+                    Icons.bookmark, // Change this to the icon you want
                     size: 26,
                   ),
                 ],
@@ -101,7 +106,7 @@ class CustomBottomBar extends StatelessWidget {
                 spacing: 10,
                 children: [
                   Icon(
-                    Icons.favorite, // Change this to the icon you want
+                    Icons.folder, // Change this to the icon you want
                     size: 24,
                   ),
                 ],
