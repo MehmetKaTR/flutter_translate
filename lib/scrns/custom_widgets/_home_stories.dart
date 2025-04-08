@@ -15,7 +15,7 @@ class HomeStories extends StatelessWidget {
             top: 0,
             child: Container(
               width: 375,
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 8),
               clipBehavior: Clip.antiAlias,
               decoration: BoxDecoration(),
               child: Row(
@@ -60,7 +60,7 @@ class HomeStories extends StatelessWidget {
               width:
                   MediaQuery.of(context).size.width, // Ekran genişliğine uyumlu
               height: 234,
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 8),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(

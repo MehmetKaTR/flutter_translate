@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
-import 'freq_used.dart';
-import '_banner.dart' as app_banner;
-import 'custom_bottom_bar.dart';
-import 'custom_search_bar.dart';
-import '_pills.dart';
-import '_home_stories.dart';
+import 'package:flutter/services.dart';
+import 'scrns/custom_widgets/custom_bottom_bar.dart';
+import 'scrns/home_page.dart'; // HomePage sayfası import edilmiştir
+import 'scrns/story_illust.dart'; // ShowIllustrations sayfası import edilmiştir
+//import 'scrns/bookmark_page.dart'; // BookmarkPage sayfası import edilmiştir
+//import 'scrns/folder_page.dart'; // FolderPage sayfası import edilmiştir
+//import 'scrns/profile_page.dart'; // ProfilePage sayfası import edilmiştir
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent, // Arka planı şeffaf yap
+      statusBarIconBrightness: Brightness.dark, // Simge rengini siyah yap
+      statusBarBrightness: Brightness.light, // iOS için
+    ),
+  );
   runApp(const MyApp());
 }
 
@@ -18,31 +27,49 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: "Poppins"),
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-          toolbarHeight: 80.0,
-          title: CustomSearchBar(), // Burada CustomSearchBar'ı kullandık
-        ),
-        body: Column(
-          children: [
-            const SizedBox(height: 2),
-            const Pills(), // Burada Pills widget'ını kullandık
-            const SizedBox(height: 30),
-            const app_banner.Banner(), // Burada Banner widget'ını kullandık
-            const SizedBox(height: 21),
-            const FreqUsed(), // Burada FreqUsed widget'ını kullandık
-            const SizedBox(height: 25),
-            const HomeStories(), // Burada HomeStories widget'ını kullandık
-          ],
-        ),
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.only(
-            bottom: 21,
-          ), // Burada alt kısımdan 21 px padding ekliyoruz
-          child: CustomBottomBar(),
-        ),
+      home: const Wrapper(),
+    );
+  }
+}
+
+class Wrapper extends StatefulWidget {
+  const Wrapper({super.key});
+
+  @override
+  _WrapperState createState() => _WrapperState();
+}
+
+class _WrapperState extends State<Wrapper> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  Widget _getBodyContent() {
+    switch (_selectedIndex) {
+      case 0:
+        return const HomePage();
+      case 1:
+        return StoryIllust();
+      default:
+        return const HomePage();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.only(top: 24.0),
+        child: _getBodyContent(),
+      ),
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(bottom: 21),
+        child: CustomBottomBar(onItemTapped: _onItemTapped),
       ),
     );
   }
