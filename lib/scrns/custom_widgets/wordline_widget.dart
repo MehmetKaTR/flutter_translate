@@ -4,17 +4,19 @@ class WordLineWidget extends StatelessWidget {
   final String word;
   final String category;
   final int frequency;
+  final Color color;
 
   const WordLineWidget({
     Key? key,
     required this.word,
     required this.category,
     required this.frequency,
+    required this.color,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
+    //double width = MediaQuery.of(context).size.width;
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
@@ -27,7 +29,7 @@ class WordLineWidget extends StatelessWidget {
             child: Container(
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: const Color(0xFFFF6D6D), // Red color
+                color: color, // Red color
                 borderRadius: BorderRadius.circular(4),
               ),
               child: Text(

@@ -1,47 +1,46 @@
 import 'package:flutter/material.dart';
-import 'show_story.dart';
-import 'si_words_list.dart';
 import 'custom_widgets/level_selector.dart';
 import 'custom_widgets/wordlist_widget.dart';
 import 'custom_widgets/selected_info.dart';
+import 'si_words_list.dart';
 
 class StoryIllust extends StatelessWidget {
-  const StoryIllust({super.key});
+  const StoryIllust({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
+    //double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    return Container(
-      margin: const EdgeInsets.only(left: 16, right: 16),
-      child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(40.0),
-          child: AppBar(
-            backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-            elevation: 0,
-            automaticallyImplyLeading: false,
-            flexibleSpace: Stack(
-              alignment: Alignment.center,
-              children: [
-                const Center(
-                  child: Text(
-                    'Story Illustration',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 1.50,
-                      decoration: TextDecoration.none,
-                    ),
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(60.0),
+        child: AppBar(
+          backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+          elevation: 0,
+          automaticallyImplyLeading: false,
+          flexibleSpace: Stack(
+            alignment: Alignment.center,
+            children: [
+              const Center(
+                child: Text(
+                  'Story Illustration',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 22,
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.w500,
+                    height: 1.50,
+                    decoration: TextDecoration.none,
                   ),
                 ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 16.0),
+              ),
+              /*
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 32.0),
+                  child: GestureDetector(
                     child: Icon(
                       Icons.arrow_back_ios,
                       size: 20,
@@ -49,19 +48,24 @@ class StoryIllust extends StatelessWidget {
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+              */
+            ],
           ),
         ),
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-        body: SafeArea(
+      ),
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      body: SafeArea(
+        child: Container(
+          color: const Color.fromARGB(255, 255, 255, 255),
+          margin: const EdgeInsets.only(left: 16, right: 16),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: height * 0.0), // Dynamically set height
+                SizedBox(height: height * 0.02), // Dynamically set height
                 story_illust_sections(context),
               ],
             ),
@@ -74,7 +78,7 @@ class StoryIllust extends StatelessWidget {
 
 Column story_illust_sections(BuildContext context) {
   double width = MediaQuery.of(context).size.width;
-  double height = MediaQuery.of(context).size.height;
+  //double height = MediaQuery.of(context).size.height;
 
   return Column(
     mainAxisSize: MainAxisSize.min,
@@ -83,9 +87,12 @@ Column story_illust_sections(BuildContext context) {
     children: [
       Container(
         width: double.infinity,
-        padding: const EdgeInsets.all(16),
+        height: 48,
+        color: const Color.fromARGB(255, 255, 255, 255),
+        padding: const EdgeInsets.symmetric(horizontal: 1.0),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center, // Ortalamayı sağlıyoruz
+          crossAxisAlignment: CrossAxisAlignment.center, // Dikeyde ortalama
           children: [
             SizedBox(
               width: width * 0.25,
@@ -93,7 +100,7 @@ Column story_illust_sections(BuildContext context) {
                 'WORDS',
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 12,
+                  fontSize: 13,
                   fontFamily: 'Inter',
                   fontWeight: FontWeight.w500,
                   height: 1.67,
@@ -101,7 +108,7 @@ Column story_illust_sections(BuildContext context) {
                 ),
               ),
             ),
-            SizedBox(width: width * 0.01), // spacing
+            SizedBox(width: width * 0.05), // spacing
             Expanded(
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,7 +119,7 @@ Column story_illust_sections(BuildContext context) {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         color: const Color.fromARGB(125, 0, 0, 0),
-                        fontSize: 14,
+                        fontSize: 15,
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.w400,
                         height: 1.40,
@@ -131,7 +138,7 @@ Column story_illust_sections(BuildContext context) {
                     },
                     child: const Padding(
                       padding: EdgeInsets.only(left: 8.0),
-                      child: Icon(Icons.arrow_forward_ios, size: 20),
+                      child: Icon(Icons.arrow_forward_ios, size: 22),
                     ),
                   ),
                 ],
@@ -140,6 +147,7 @@ Column story_illust_sections(BuildContext context) {
           ],
         ),
       ),
+      const SizedBox(height: 16),
       LevelSelector(
         title: 'Topic',
         items: [
@@ -187,11 +195,36 @@ Column story_illust_sections(BuildContext context) {
       const SizedBox(height: 16),
       WordListWidget(
         wordsData: [
-          {'word': 'reckless', 'category': 'Vocabulary', 'frequency': 2},
-          {'word': 'brave', 'category': 'Adjective', 'frequency': 3},
-          {'word': 'harmony', 'category': 'Noun', 'frequency': 1},
-          {'word': 'fragile', 'category': 'Adjective', 'frequency': 5},
-          {'word': 'sunshine', 'category': 'Noun', 'frequency': 4},
+          {
+            'word': 'reckless',
+            'category': 'Vocabulary',
+            'frequency': 2,
+            'color': Colors.red,
+          },
+          {
+            'word': 'brave',
+            'category': 'Adjective',
+            'frequency': 3,
+            'color': Colors.yellow,
+          },
+          {
+            'word': 'harmony',
+            'category': 'Noun',
+            'frequency': 1,
+            'color': Colors.deepPurpleAccent,
+          },
+          {
+            'word': 'fragile',
+            'category': 'Adjective',
+            'frequency': 5,
+            'color': Colors.greenAccent,
+          },
+          {
+            'word': 'sunshine',
+            'category': 'Noun',
+            'frequency': 4,
+            'color': Colors.blueAccent,
+          },
         ],
       ),
       const SizedBox(height: 16),

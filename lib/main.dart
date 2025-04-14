@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'scrns/custom_widgets/custom_bottom_bar.dart';
 import 'scrns/home_page.dart'; // HomePage sayfası import edilmiştir
 import 'scrns/story_illust.dart'; // ShowIllustrations sayfası import edilmiştir
+import 'scrns/si_words_list.dart'; // ShowIllustrations sayfası import edilmiştir
 //import 'scrns/bookmark_page.dart'; // BookmarkPage sayfası import edilmiştir
 //import 'scrns/folder_page.dart'; // FolderPage sayfası import edilmiştir
 //import 'scrns/profile_page.dart'; // ProfilePage sayfası import edilmiştir
@@ -54,6 +55,8 @@ class _WrapperState extends State<Wrapper> {
         return const HomePage();
       case 1:
         return StoryIllust();
+      case 2:
+        return SIWordsList();
       default:
         return const HomePage();
     }
@@ -62,13 +65,13 @@ class _WrapperState extends State<Wrapper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(top: 24.0),
+      body: Container(
+        margin: const EdgeInsets.only(top: 24.0),
         child: _getBodyContent(),
       ),
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(bottom: 21),
+        padding: const EdgeInsets.only(bottom: 10),
         child: CustomBottomBar(onItemTapped: _onItemTapped),
       ),
     );

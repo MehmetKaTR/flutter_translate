@@ -98,7 +98,7 @@ class HomeStories extends StatelessWidget {
   Widget _buildStoryContainer(String title, String wordCount, String imageUrl) {
     return Container(
       margin: const EdgeInsets.only(
-        right: 16,
+        right: 25,
       ), // Aralarındaki mesafeyi artırdım
       width: 148, // Container'ın genişliğini sabitledim
       child: Column(

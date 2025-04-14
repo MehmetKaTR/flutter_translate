@@ -25,21 +25,22 @@ class _LevelSelectorState extends State<LevelSelector> {
 
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      color: const Color.fromARGB(255, 255, 255, 255),
+      padding: const EdgeInsets.symmetric(horizontal: 4.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center, // Ortalamayı sağlıyoruz
         crossAxisAlignment: CrossAxisAlignment.center, // Dikeyde ortalama
         children: [
           // Başlık metni
           SizedBox(
-            width: width * 0.20, // Yine genişliği dinamik hale getiriyoruz
+            width: width * 0.25, // Yine genişliği dinamik hale getiriyoruz
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
                 widget.title.toUpperCase(),
                 style: const TextStyle(
                   color: Colors.black,
-                  fontSize: 12,
+                  fontSize: 13,
                   fontFamily: 'Inter',
                   fontWeight: FontWeight.w500,
                   height: 1.67,
@@ -67,7 +68,7 @@ class _LevelSelectorState extends State<LevelSelector> {
                   ),
                   style: const TextStyle(
                     color: Colors.black,
-                    fontSize: 14,
+                    fontSize: 15,
                     fontFamily: 'Inter',
                     fontWeight: FontWeight.w400,
                     height: 1.40,
@@ -90,7 +91,7 @@ class _LevelSelectorState extends State<LevelSelector> {
                                 '(${item['desc']})',
                                 style: TextStyle(
                                   color: const Color.fromARGB(87, 0, 0, 0),
-                                  fontSize: 12,
+                                  fontSize: 15,
                                 ),
                               ),
                             ],

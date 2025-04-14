@@ -10,37 +10,35 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width - 32; // container width
-    double height = MediaQuery.of(context).size.height; // Screen height
+    double screenWidth = MediaQuery.of(context).size.width;
+    double width = screenWidth - 32;
+    double height = MediaQuery.of(context).size.height;
 
-    return Container(
-      margin: const EdgeInsets.only(left: 16, right: 16),
-      child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(40.0),
-          child: AppBar(
-            backgroundColor: const Color.fromARGB(255, 255, 0, 0),
-            elevation: 0,
-            title: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: CustomSearchBar(),
-            ),
-            automaticallyImplyLeading: false,
-          ),
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(60.0),
+        child: AppBar(
+          backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+          elevation: 0,
+          automaticallyImplyLeading: false,
+          title: SizedBox(width: double.infinity, child: CustomSearchBar()),
+          centerTitle: false,
         ),
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-        body: SafeArea(
+      ),
+      backgroundColor: const Color(0xFFFFFFFF),
+      body: SafeArea(
+        child: Container(
+          margin: const EdgeInsets.only(left: 16, right: 16),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: height * 0.03), // Dynamically set height
+                SizedBox(height: height * 0.02),
                 Pills(width: width),
-                SizedBox(height: height * 0.04), // Dynamically set height
+                SizedBox(height: height * 0.04),
                 app_banner.BannerSlider(width: width),
-                SizedBox(height: height * 0.04), // Dynamically set height
+                SizedBox(height: height * 0.04),
                 FreqUsed(
                   width: width,
                   words: [
@@ -61,10 +59,10 @@ class HomePage extends StatelessWidget {
                     Colors.orange,
                     Colors.cyan,
                     Colors.teal,
-                    Colors.brown, // Bu 8. eleman gösterilmeyecek
+                    Colors.brown,
                   ],
                 ),
-                SizedBox(height: height * 0.02), // Dynamically set height
+                SizedBox(height: height * 0.02),
                 const HomeStories(),
               ],
             ),

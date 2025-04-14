@@ -56,6 +56,7 @@ class WordListWidget extends StatelessWidget {
               word: wordData['word'],
               category: wordData['category'],
               frequency: wordData['frequency'],
+              color: wordData['color'],
             );
           },
         ),

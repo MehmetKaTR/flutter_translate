@@ -5,20 +5,17 @@ class CustomSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-
     return Container(
-      width: screenWidth,
-      height: 40,
+      height: 50,
       padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
-        color: const Color(0xFFF5F5F5), // Burada color parametresi var
+        color: const Color(0xFFF5F5F5),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
         children: [
           Icon(Icons.search, size: 24, color: const Color(0xFF828282)),
-          const SizedBox(width: 8), // ikon ile metin arası boşluk
+          const SizedBox(width: 8),
           Expanded(
             child: Text(
               'Search',
