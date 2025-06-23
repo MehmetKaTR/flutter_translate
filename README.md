@@ -74,7 +74,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-Created by [Your Name] — feel free to reach out!
+Created by Mehmet Kaan Genç — feel free to reach out!
 
 ---
 
